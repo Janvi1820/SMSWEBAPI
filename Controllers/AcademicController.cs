@@ -80,15 +80,16 @@ namespace SMSWEBAPI.Controllers
             db.SaveChanges();
             return Ok("leave Added Successfully");
         }
-        [Route("GetLeave/{id}")]
+        [Route("GetLeave")]
         [HttpGet]
-        public IActionResult GetLeave(int id)
+        public IActionResult GetLeave()
         {
-            var student = db.TeachersLeave.Find(id);
+            var student = db.TeachersLeave.ToList();
            
-            return Ok("Leave");
+            return Ok(student);
         }
 
     }
 }
 
+ 
