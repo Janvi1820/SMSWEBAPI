@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using SMS.Models;
 using SMSWEBAPI.Data;
@@ -88,7 +89,21 @@ namespace SMSWEBAPI.Controllers
            
             return Ok(student);
         }
+        [Route("ApproveTeacherLeave/{id}")]
+        [HttpPut]
+        public IActionResult ApproveTeacherLeave(int id)
+        {
+            db.Database.ExecuteSqlRaw($"Exec ApproveTeacherLeave '{id}'");
+            return Ok("Leave request approved successfully.");
+        }
 
+        [Route("RejectTeacherLeave/{id}")]
+        [HttpPut]
+        public IActionResult RejectTeacherLeave(int id)
+        {
+            db.Database.ExecuteSqlRaw($"EXEC RejectTeacherLeave '{id}'");
+            return Ok("Leave request rejected successfully.");
+        }
     }
 }
 

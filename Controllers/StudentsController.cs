@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SMSWEBAPI.Data;
 using SMSWEBAPI.Models;
 using System.Linq;
@@ -210,6 +211,6 @@ namespace SMSWEBAPI.Controllers
             var data = db.Classes.ToList();
             return Ok(data);
         }
-
+        
     }
 }
